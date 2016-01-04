@@ -1,0 +1,7 @@
+config.json
+.idea
+*.iml
+node_modules/
+__pycache__/
+*.py[cod]
+venv/

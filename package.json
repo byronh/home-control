@@ -1,0 +1,10 @@
+{
+    "name": "dashboard-static",
+    "version": "1.0.0",
+    "license": "UNLICENSED",
+    "description": "static assets for dashboard",
+    "repository": "https://github.com/byronh/dashboard",
+    "dependencies": {
+        "skeleton-css": "^2.0.4"
+    }
+}
