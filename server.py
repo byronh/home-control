@@ -1,7 +1,7 @@
 import tornado.ioloop
 import tornado.web
 
-from handlers import DesktopOnHandler, LightsDimHandler, LightsOffHandler, LightsOnHandler
+from handlers import DesktopOnHandler, LightsBrightHandler, LightsDimHandler, LightsOffHandler, LightsOnHandler
 
 if __name__ == '__main__':
     settings = {
@@ -10,6 +10,7 @@ if __name__ == '__main__':
     }
     app = tornado.web.Application([
         (r'/api/desktop/on', DesktopOnHandler),
+        (r'/api/lights/bright', LightsBrightHandler),
         (r'/api/lights/dim', LightsDimHandler),
         (r'/api/lights/off', LightsOffHandler),
         (r'/api/lights/on', LightsOnHandler),

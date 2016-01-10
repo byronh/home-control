@@ -1,2 +1,2 @@
 [raspberry-pis]
-overwatch ansible_ssh_user=pi
+pi ansible_ssh_user=pi

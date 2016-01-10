@@ -1,7 +1,8 @@
 - hosts: raspberry-pis
   vars:
     root_dir: /home/pi/apps/dashboard
-    service_name: dashboard
+    web_service_name: dashboard
+    io_service_name: circuits
   tasks:
     - name: packages
       apt: name='{{ item }}' state=present
@@ -15,9 +16,15 @@
       command: virtualenv {{ root_dir }}/venv -p python3 creates={{ root_dir }}/venv
     - name: dependencies
       pip: requirements={{ root_dir }}/requirements.txt virtualenv={{ root_dir }}/venv
-    - name: service
-      template: src={{ service_name }}.service dest=/etc/systemd/system/{{ service_name }}.service
+    - name: web service
+      template: src={{ web_service_name }}.service dest=/etc/systemd/system/{{ web_service_name }}.service
       sudo: yes
-    - name: server
-      service: name={{ service_name }} state=restarted enabled=yes
+    - name: io service
+      template: src={{ io_service_name }}.service dest=/etc/systemd/system/{{ io_service_name }}.service
+      sudo: yes
+    - name: start web service
+      service: name={{ web_service_name }} state=restarted enabled=yes
+      sudo: yes
+    - name: start io service
+      service: name={{ io_service_name }} state=restarted enabled=yes
       sudo: yes

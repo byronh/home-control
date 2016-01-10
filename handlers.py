@@ -28,20 +28,23 @@ def set_light_state(data):
 
 class LightsOnHandler(tornado.web.RequestHandler):
     def get(self):
-        print('Turning lights on')
+        set_light_state({'on': True})
+        return self.finish({'success': True})
+
+
+class LightsBrightHandler(tornado.web.RequestHandler):
+    def get(self):
         set_light_state({'on': True, 'bri': 254})
         return self.finish({'success': True})
 
 
 class LightsDimHandler(tornado.web.RequestHandler):
     def get(self):
-        print('Dimming lights')
-        set_light_state({'on': True, 'bri': 140})
+        set_light_state({'on': True, 'bri': 90})
         return self.finish({'success': True})
 
 
 class LightsOffHandler(tornado.web.RequestHandler):
     def get(self):
-        print('Turning lights off')
         set_light_state({'on': False})
         return self.finish({'success': True})
