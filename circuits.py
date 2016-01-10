@@ -26,7 +26,7 @@ def on_motion(channel):
     elif 7 <= now.hour <= 9:
         requests.get('{}/api/lights/off'.format(host))
 
-    time.sleep(2)
+    time.sleep(30)
     io.add_event_detect(pir_pin, io.RISING, callback=on_motion, bouncetime=bounce_time)
 
 
