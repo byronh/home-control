@@ -7,6 +7,7 @@ Type=simple
 User=pi
 WorkingDirectory={{ root_dir }}
 ExecStart={{ root_dir }}/venv/bin/python {{ root_dir }}/server.py
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

@@ -1,4 +1,4 @@
+gpiozero==1.0.0
 requests==2.9.1
-rpi.gpio==0.6.1
 tornado==4.3
 wakeonlan==0.2.2
