@@ -1,0 +1,13 @@
+[Unit]
+Description={{ dns_service_name }}
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory={{ root_dir }}
+ExecStart={{ root_dir }}/venv/bin/python {{ root_dir }}/dyndns.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

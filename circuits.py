@@ -15,7 +15,7 @@ def loop():
         return
 
     now = datetime.datetime.now()
-    if 16 <= now.hour <= 23 or 0 <= now.hour <= 5:
+    if 13 <= now.hour <= 23 or 0 <= now.hour <= 5:
         requests.get('{}/api/lights/on'.format(host))
         print('Lights activated')
         if now.weekday() <= 4 and 16 <= now.hour <= 21:

@@ -40,7 +40,7 @@ class LightsBrightHandler(tornado.web.RequestHandler):
 
 class LightsDimHandler(tornado.web.RequestHandler):
     def get(self):
-        set_light_state({'on': True, 'bri': 90})
+        set_light_state({'on': True, 'bri': 100})
         return self.finish({'success': True})
 
 

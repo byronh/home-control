@@ -1,6 +1,7 @@
 - hosts: raspberry-pis
   vars:
     root_dir: /home/pi/apps/dashboard
+    dns_service_name: dyndns
     web_service_name: dashboard
     io_service_name: circuits
   tasks:
@@ -22,9 +23,15 @@
     - name: io service
       template: src={{ io_service_name }}.service dest=/etc/systemd/system/{{ io_service_name }}.service
       sudo: yes
+    - name: dns service
+      template: src={{ dns_service_name }}.service dest=/etc/systemd/system/{{ dns_service_name }}.service
+      sudo: yes
     - name: start web service
       service: name={{ web_service_name }} state=restarted enabled=yes
       sudo: yes
     - name: start io service
       service: name={{ io_service_name }} state=restarted enabled=yes
+      sudo: yes
+    - name: start dns service
+      service: name={{ dns_service_name }} state=restarted enabled=yes
       sudo: yes
